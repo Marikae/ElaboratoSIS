@@ -1,0 +1,21 @@
+.model piuuno8
+.inputs a0 a1 a2 a3 a4 a5 a6 a7
+.outputs x0 x1 x2 x3 x4 x5 x6 x7
+
+.subckt zero b=zero
+.subckt uno b=uno
+
+.subckt somma1 a=a7 b=uno cin=zero o=x7 c=carry1
+.subckt somma1 a=a6 b=carry1 cin=zero o=x6 c=carry2
+.subckt somma1 a=a5 b=carry2 cin=zero o=x5 c=carry3
+.subckt somma1 a=a4 b=carry3 cin=zero o=x4 c=carry4
+.subckt somma1 a=a3 b=carry4 cin=zero o=x3 c=carry5
+.subckt somma1 a=a2 b=carry5 cin=zero o=x2 c=carry6
+.subckt somma1 a=a1 b=carry6 cin=zero o=x1 c=carry7
+.subckt somma1 a=a0 b=carry7 cin=zero o=x0 c=carry
+
+.search somma1.blif
+.search zero.blif
+.search uno.blif
+
+.end

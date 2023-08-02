@@ -1,0 +1,89 @@
+.model FSM
+.inputs RST START pH1 pH2 pH3 pH4 pH5 pH6 pH7 pH8 END ERRORE
+.outputs FINE_OPERAZIONE ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO
+.latch    [4] LatchOut_v12   0
+.latch    [5] LatchOut_v13   0
+.start_kiss
+.i 12
+.o 4
+.p 29
+.s 4
+.r RST
+00---------- RST RST 0000
+1----------- RST RST 0000
+0100-------- RST ACI 0001
+01010------- RST ACI 0001
+010110------ RST ACI 0001
+0110-1------ RST BAS 0010
+01101------- RST BAS 0010
+0110--1----- RST BAS 0010
+0110---1---- RST BAS 0010
+0110----1--- RST BAS 0010
+0110-----1-- RST BAS 0010
+01110------- RST BAS 0010
+0111100000-- RST BAS 0010
+010111------ RST END 1000
+0110000000-- RST END 1000
+011111------ RST END 0100
+01111-1----- RST END 0100
+01111--1---- RST END 0100
+01111---1--- RST END 0100
+01111----1-- RST END 0100
+1----------- ACI RST 0000
+0---------0- ACI ACI 0001
+0---------1- ACI END 1000
+1----------- BAS RST 0000
+0---------0- BAS BAS 0010
+0---------1- BAS END 1000
+1----------- END RST 0000
+0----------0 END END 1000
+0----------1 END END 0100
+.end_kiss
+.latch_order LatchOut_v12 LatchOut_v13
+.code RST 00
+.code ACI 10
+.code BAS 01
+.code END 11
+.names ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO LatchOut_v12 [25] [27] FINE_OPERAZIONE
+0-0-1- 1
+-0-0-1 1
+.names ERRORE LatchOut_v12 [17] [26] [27] [28] ERRORE_SENSORE
+11--1- 1
+--10-1 1
+.names pH2 pH3 END LatchOut_v12 [17] [27] [28] VALVOLA_ACIDO
+--00-1- 1
+10----1 1
+0---1-1 1
+-1--0-1 1
+.names RST pH1 pH4 END LatchOut_v12 LatchOut_v13 [24] [26] VALVOLA_BASICO
+-00---1- 1
+-0----11 1
+0--010-- 1
+.names FINE_OPERAZIONE [25] [4]
+1- 1
+-1 1
+.names FINE_OPERAZIONE VALVOLA_BASICO [22] [27] [5]
+1--- 1
+---1 1
+-01- 1
+.names pH4 pH5 pH6 pH7 pH8 [17]
+1---- 1
+-1--- 1
+--1-- 1
+---1- 1
+----1 1
+.names RST START [22]
+01 1
+.names LatchOut_v12 LatchOut_v13 [22] [24]
+001 1
+.names RST VALVOLA_ACIDO LatchOut_v12 [22] [25]
+0-1- 1
+-0-1 1
+.names pH2 pH3 [26]
+0- 1
+-0 1
+.names RST LatchOut_v13 [27]
+01 1
+.names pH1 [24] [28]
+11 1
+.end

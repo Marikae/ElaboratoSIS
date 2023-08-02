@@ -1,0 +1,16 @@
+.model mux8_2
+.inputs a0 a1 a2 a3 a4 a5 a6 a7 b0 b1 b2 b3 b4 b5 b6 b7 s
+.outputs o0 o1 o2 o3 o4 o5 o6 o7
+
+.subckt mux1_2 a=a0 b=b0 s=s o=o0
+.subckt mux1_2 a=a1 b=b1 s=s o=o1
+.subckt mux1_2 a=a2 b=b2 s=s o=o2
+.subckt mux1_2 a=a3 b=b3 s=s o=o3
+.subckt mux1_2 a=a4 b=b4 s=s o=o4
+.subckt mux1_2 a=a5 b=b5 s=s o=o5
+.subckt mux1_2 a=a6 b=b6 s=s o=o6
+.subckt mux1_2 a=a7 b=b7 s=s o=o7
+
+.search mux1_2.blif
+
+.end

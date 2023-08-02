@@ -1,0 +1,14 @@
+.model neutro
+.inputs pH1 pH2 pH3 pH4 pH5 pH6 pH7 pH8
+.outputs END
+
+.subckt less_7 a0=pH1 a1=pH2 a2=pH3 a3=pH4 a4=pH5 a5=pH6 a6=pH7 a7=pH8 o=o1
+.subckt leq_8 a0=pH1 a1=pH2 a2=pH3 a3=pH4 a4=pH5 a5=pH6 a6=pH7 a7=pH8 o=o2
+
+.search less_7.blif
+.search leq_8.blif
+
+.names o1 o2 END
+01 1
+
+.end

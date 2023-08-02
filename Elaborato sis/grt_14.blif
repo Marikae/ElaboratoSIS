@@ -1,0 +1,12 @@
+.model grt_14
+.inputs a0 a1 a2 a3 a4 a5 a6 a7
+.outputs o
+
+.names a0 a1 a2 a3 a4 a5 a6 a7 o
+1111---- 1
+111-1--- 1
+111--1-- 1
+111---1- 1
+111----1 1
+
+.end

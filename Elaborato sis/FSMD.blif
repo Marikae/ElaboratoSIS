@@ -1,0 +1,231 @@
+.model FSMD
+.inputs RST START pH1 pH2 pH3 pH4 pH5 pH6 pH7 pH8
+.outputs FINE_OPERAZIONE ERRORE_SENSORE VALVOLA_ACIDO VALVOLA_BASICO \
+PH_FINALE1 PH_FINALE2 PH_FINALE3 PH_FINALE4 PH_FINALE5 PH_FINALE6 PH_FINALE7 \
+PH_FINALE8 NCLK1 NCLK2 NCLK3 NCLK4 NCLK5 NCLK6 NCLK7 NCLK8
+.latch    [4] LatchOut_v12   0
+.latch    [5] LatchOut_v13   0
+.latch    epH1 cpH1 re NIL 0
+.latch    epH2 cpH2 re NIL 0
+.latch    epH3 cpH3 re NIL 0
+.latch    epH4 cpH4 re NIL 0
+.latch    epH5 cpH5 re NIL 0
+.latch    epH6 cpH6 re NIL 0
+.latch    epH7 cpH7 re NIL 0
+.latch    epH8 cpH8 re NIL 0
+.latch    dclk1 bclk1 re NIL 0
+.latch    dclk2 bclk2 re NIL 0
+.latch    dclk4 bclk4 re NIL 0
+.latch    dclk5 bclk5 re NIL 0
+.latch    dclk6 bclk6 re NIL 0
+.latch    dclk7 bclk7 re NIL 0
+.latch    dclk8 bclk8 re NIL 0
+.names ERRORE_SENSORE VALVOLA_BASICO END [468] [477] FINE_OPERAZIONE
+--1-1 1
+00-1- 1
+.names ERRORE LatchOut_v12 [353] [473] [476] [477] ERRORE_SENSORE
+--101- 1
+11---1 1
+.names pH2 pH3 END LatchOut_v12 [353] [476] [477] VALVOLA_ACIDO
+10---1- 1
+0---11- 1
+-1--01- 1
+--00--1 1
+.names RST pH1 pH4 END LatchOut_v12 LatchOut_v13 [466] [473] VALVOLA_BASICO
+-00---1- 1
+-0----11 1
+0--010-- 1
+.names [344] [406] PH_FINALE1
+11 1
+.names dpH2 [344] PH_FINALE2
+11 1
+.names dpH3 [344] PH_FINALE3
+11 1
+.names dpH4 [344] PH_FINALE4
+11 1
+.names dpH5 [344] PH_FINALE5
+11 1
+.names dpH6 [344] PH_FINALE6
+11 1
+.names epH7 [467] PH_FINALE7
+11 1
+.names epH8 [467] PH_FINALE8
+11 1
+.names bclk2 [470] NCLK2
+11 1
+.names bclk1 [470] [331]
+11 1
+.names bclk4 [470] NCLK4
+11 1
+.names bclk5 [470] NCLK5
+11 1
+.names bclk6 [470] NCLK6
+11 1
+.names bclk7 [470] NCLK7
+11 1
+.names ERRORE bclk8 dclk8 NCLK8
+011 1
+.names cpH1 cpH2 cpH3 cpH4 [469] [488] END
+0--11- 1
+100--0 1
+.names cpH1 [469] [488] ERRORE
+111 1
+.names FINE_OPERAZIONE [468] [4]
+1- 1
+-1 1
+.names FINE_OPERAZIONE VALVOLA_BASICO [463] [477] [5]
+1--- 1
+---1 1
+-01- 1
+.names START pH2 cpH2 dpH2
+11- 1
+0-1 1
+.names START pH3 cpH3 dpH3
+11- 1
+0-1 1
+.names START pH4 cpH4 dpH4
+11- 1
+0-1 1
+.names START pH5 cpH5 dpH5
+11- 1
+0-1 1
+.names START pH6 cpH6 dpH6
+11- 1
+0-1 1
+.names RST PH_FINALE1 dpH2 [406] [437] [464] [475] epH1
+-1----- 1
+0--11-- 1
+--000-- 1
+---000- 1
+0-11--0 1
+.names PH_FINALE2 dpH2 [339] [350] [393] [437] [474] epH2
+1------ 1
+-11--1- 1
+-0--10- 1
+---11-0 1
+.names PH_FINALE3 dpH3 epH5 [339] [393] [464] [474] [475] epH3
+1------- 1
+--1---0- 1
+-1-10--- 1
+----11-0 1
+----1011 1
+.names PH_FINALE4 dpH4 [339] [393] epH4
+1--- 1
+-0-1 1
+-110 1
+.names PH_FINALE5 dpH5 dpH6 epH6 [339] [393] epH5
+1----- 1
+--0--1 1
+-101-- 1
+-01-1- 1
+.names VALVOLA_ACIDO PH_FINALE6 dpH6 [464] epH6
+-1-- 1
+1-1- 1
+--00 1
+.names RST START pH7 cpH7 [463] epH7
+--1-1 1
+00-1- 1
+.names RST START pH8 cpH8 [463] epH8
+--1-1 1
+00-1- 1
+.names RST bclk1 bclk2 dclk2 dclk1
+-1-1 1
+010- 1
+.names bclk2 dclk8 [339] [344] [489] dclk2
+11--- 1
+1--1- 1
+1-1-1 1
+001-0 1
+.names RST bclk4 bclk5 dclk5 dclk4
+-1-1 1
+010- 1
+0010 1
+.names RST bclk5 bclk6 dclk6 dclk5
+-1-1 1
+010- 1
+0010 1
+.names RST bclk6 bclk7 dclk7 dclk6
+-1-1 1
+010- 1
+0010 1
+.names RST bclk7 bclk8 dclk8 dclk7
+-1-1 1
+010- 1
+0010 1
+.names bclk8 [339] [344] dclk8
+01- 1
+1-1 1
+.names [331] NCLK1
+1 1
+.names [331] NCLK3
+1 1
+.names RST [344] [339]
+00 1
+.names RST [467] [344]
+01 1
+.names VALVOLA_ACIDO dpH2 dpH5 [474] [484] [350]
+1-1-- 1
+-01-- 1
+--11- 1
+0---1 1
+.names pH4 pH5 pH6 pH7 pH8 [353]
+1---- 1
+-1--- 1
+--1-- 1
+---1- 1
+----1 1
+.names VALVOLA_ACIDO dpH5 [339] [464] [484] [393]
+---00 1
+101-- 1
+.names START pH1 cpH1 [406]
+11- 1
+0-1 1
+.names dpH5 [350] [475] [437]
+-1- 1
+0-1 1
+.names RST START [463]
+01 1
+.names VALVOLA_ACIDO [339] [464]
+1- 1
+-0 1
+.names LatchOut_v12 LatchOut_v13 [463] [466]
+001 1
+.names FINE_OPERAZIONE END [467]
+1- 1
+-1 1
+.names RST VALVOLA_ACIDO LatchOut_v12 [463] [468]
+0-1- 1
+-0-1 1
+.names cpH2 cpH3 [469]
+11 1
+.names ERRORE [344] [470]
+01 1
+.names pH2 pH3 [473]
+0- 1
+-0 1
+.names dpH3 dpH4 [474]
+0- 1
+-0 1
+.names dpH3 dpH4 [475]
+1- 1
+-1 1
+.names pH1 [466] [476]
+11 1
+.names RST LatchOut_v13 [477]
+01 1
+.names dpH5 dpH6 [484]
+0- 1
+-0 1
+.names cpH4 cpH5 cpH6 cpH7 cpH8 [488]
+1---- 1
+-1--- 1
+--1-- 1
+---1- 1
+----1 1
+.names bclk1 bclk4 bclk5 bclk6 bclk7 [489]
+0---- 1
+-0--- 1
+--0-- 1
+---0- 1
+----0 1
+.end

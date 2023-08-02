@@ -1,0 +1,189 @@
+.model DATAPATH
+.inputs pH1 pH2 pH3 pH4 pH5 pH6 pH7 pH8 RST VALVOLA_ACIDO START \
+FINE_OPERAZIONE
+.outputs PH_FINALE1 PH_FINALE2 PH_FINALE3 PH_FINALE4 PH_FINALE5 PH_FINALE6 \
+PH_FINALE7 PH_FINALE8 NCLK1 NCLK2 NCLK3 NCLK4 NCLK5 NCLK6 NCLK7 NCLK8 END \
+ERRORE
+.latch    epH1 cpH1 re NIL 0
+.latch    epH2 cpH2 re NIL 0
+.latch    epH3 cpH3 re NIL 0
+.latch    epH4 cpH4 re NIL 0
+.latch    epH5 cpH5 re NIL 0
+.latch    epH6 cpH6 re NIL 0
+.latch    epH7 cpH7 re NIL 0
+.latch    epH8 cpH8 re NIL 0
+.latch    dclk1 bclk1 re NIL 0
+.latch    dclk2 bclk2 re NIL 0
+.latch    dclk4 bclk4 re NIL 0
+.latch    dclk5 bclk5 re NIL 0
+.latch    dclk6 bclk6 re NIL 0
+.latch    dclk7 bclk7 re NIL 0
+.latch    dclk8 bclk8 re NIL 0
+.names dpH1 [129] PH_FINALE1
+11 1
+.names dpH2 [129] PH_FINALE2
+11 1
+.names dpH3 [129] PH_FINALE3
+11 1
+.names dpH4 [129] PH_FINALE4
+11 1
+.names dpH5 [129] PH_FINALE5
+11 1
+.names dpH6 [129] PH_FINALE6
+11 1
+.names epH7 [222] PH_FINALE7
+11 1
+.names epH8 [222] PH_FINALE8
+11 1
+.names bclk2 [219] NCLK2
+11 1
+.names bclk1 [219] [119]
+11 1
+.names bclk4 [219] NCLK4
+11 1
+.names bclk5 [219] NCLK5
+11 1
+.names bclk6 [219] NCLK6
+11 1
+.names bclk7 [219] NCLK7
+11 1
+.names ERRORE bclk8 dclk8 NCLK8
+011 1
+.names cpH1 cpH2 cpH3 cpH4 [221] [234] END
+0--11- 1
+100--0 1
+.names cpH1 [221] [234] ERRORE
+111 1
+.names pH1 START cpH1 dpH1
+11- 1
+-01 1
+.names pH2 START cpH2 dpH2
+11- 1
+-01 1
+.names pH3 START cpH3 dpH3
+11- 1
+-01 1
+.names pH4 START cpH4 dpH4
+11- 1
+-01 1
+.names pH5 START cpH5 dpH5
+11- 1
+-01 1
+.names pH6 START cpH6 dpH6
+11- 1
+-01 1
+.names PH_FINALE1 dpH1 dpH2 epH2 [134] [154] [218] epH1
+1------ 1
+-1--1-- 1
+-111--- 1
+-0--01- 1
+-1-0--1 1
+-0010-- 1
+.names PH_FINALE2 dpH2 dpH3 dpH4 epH3 [134] [154] [218] [231] epH2
+1-------- 1
+-1---1--- 1
+-1-1---1- 1
+-1--0--1- 1
+-----11-0 1
+-00-10--- 1
+.names PH_FINALE3 dpH3 dpH4 [148] [154] [216] [217] [218] [236] epH3
+1-------- 1
+-0--1-0-- 1
+-11----1- 1
+-00-----1 1
+-1-1-11-- 1
+.names PH_FINALE4 dpH4 dpH6 [154] [216] [218] [236] epH4
+1------ 1
+-0----1 1
+-011--- 1
+-101--- 1
+-1--11- 1
+.names PH_FINALE5 dpH5 dpH6 [148] [154] [236] epH5
+1----- 1
+-----1 1
+--0-1- 1
+-011-- 1
+.names VALVOLA_ACIDO PH_FINALE6 dpH6 [148] epH6
+-1-- 1
+1-11 1
+0-01 1
+.names pH7 RST START cpH7 epH7
+101- 1
+-001 1
+.names pH8 RST START cpH8 epH8
+101- 1
+-001 1
+.names RST bclk1 bclk2 dclk2 dclk1
+-1-1 1
+010- 1
+.names RST bclk2 [129] [148] [235] dclk2
+-11-- 1
+01--1 1
+-0-10 1
+.names RST bclk4 bclk5 dclk5 dclk4
+-1-1 1
+010- 1
+0010 1
+.names RST bclk5 bclk6 dclk6 dclk5
+-1-1 1
+010- 1
+0010 1
+.names RST bclk6 bclk7 dclk7 dclk6
+-1-1 1
+010- 1
+0010 1
+.names RST bclk7 bclk8 dclk8 dclk7
+-1-1 1
+010- 1
+0010 1
+.names bclk8 [129] [148] dclk8
+11- 1
+0-1 1
+.names [119] NCLK1
+1 1
+.names [119] NCLK3
+1 1
+.names RST [148] [129]
+00 1
+.names dpH2 [154] [216] [218] [231] [134]
+01--- 1
+--11- 1
+-1--1 1
+.names RST [222] [148]
+00 1
+.names VALVOLA_ACIDO dpH5 [148] [154]
+011 1
+.names VALVOLA_ACIDO dpH5 [216]
+0- 1
+-1 1
+.names dpH4 dpH6 [217]
+0- 1
+-0 1
+.names [148] [154] [218]
+10 1
+.names ERRORE [129] [219]
+01 1
+.names cpH2 cpH3 [221]
+11 1
+.names FINE_OPERAZIONE END [222]
+1- 1
+-1 1
+.names dpH3 [217] [231]
+0- 1
+-1 1
+.names cpH4 cpH5 cpH6 cpH7 cpH8 [234]
+1---- 1
+-1--- 1
+--1-- 1
+---1- 1
+----1 1
+.names bclk1 bclk4 bclk5 bclk6 bclk7 bclk8 [235]
+0----- 1
+-0---- 1
+--0--- 1
+---0-- 1
+----0- 1
+-----0 1
+.names [148] [216] [236]
+10 1
+.end

@@ -1,0 +1,9 @@
+.model leq_8
+.inputs a0 a1 a2 a3 a4 a5 a6 a7
+.outputs o
+
+.names a0 a1 a2 a3 a4 a5 a6 a7 o
+0------- 1
+10000000 1
+
+.end

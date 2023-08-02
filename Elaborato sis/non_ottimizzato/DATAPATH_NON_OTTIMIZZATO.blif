@@ -1,0 +1,62 @@
+.model DATAPATH
+.inputs pH1 pH2 pH3 pH4 pH5 pH6 pH7 pH8 RST VALVOLA_ACIDO START FINE_OPERAZIONE
+.outputs PH_FINALE1 PH_FINALE2 PH_FINALE3 PH_FINALE4 PH_FINALE5 PH_FINALE6 PH_FINALE7 PH_FINALE8 NCLK1 NCLK2 NCLK3 NCLK4 NCLK5 NCLK6 NCLK7 NCLK8 END ERRORE
+
+.subckt zero b=zero
+.subckt or2 a=FINE_OPERAZIONE b=END o=fe
+.subckt and2 a=START b=fe o=sf
+
+.subckt mux8_2 a0=cpH1 a1=cpH2 a2=cpH3 a3=cpH4 a4=cpH5 a5=cpH6 a6=cpH7 a7=cpH8 b0=pH1 b1=pH2 b2=pH3 b3=pH4 b4=pH5 b5=pH6 b6=pH7 b7=pH8 s=START o0=dpH1 o1=dpH2 o2=dpH3 o3=dpH4 o4=dpH5 o5=dpH6 o6=dpH7 o7=dpH8
+
+.subckt piu025 pH1=dpH1 pH2=dpH2 pH3=dpH3 pH4=dpH4 pH5=dpH5 pH6=dpH6 pH7=dpH7 pH8=dpH8 x1=a1 x2=a2 x3=a3 x4=a4 x5=a5 x6=a6 x7=a7 x8=a8
+
+.subckt meno050 pH1=dpH1 pH2=dpH2 pH3=dpH3 pH4=dpH4 pH5=dpH5 pH6=dpH6 pH7=dpH7 pH8=dpH8 x1=b1 x2=b2 x3=b3 x4=b4 x5=b5 x6=b6 x7=b7 x8=b8
+
+.subckt mux8_2 a0=a1 a1=a2 a2=a3 a3=a4 a4=a5 a5=a6 a6=a7 a7=a8 b0=b1 b1=b2 b2=b3 b3=b4 b4=b5 b5=b6 b6=b7 b7=b8 s=VALVOLA_ACIDO o0=apH1 o1=apH2 o2=apH3 o3=apH4 o4=apH5 o5=apH6 o6=apH7 o7=apH8
+
+.subckt mux8_2 a0=apH1 a1=apH2 a2=apH3 a3=apH4 a4=apH5 a5=apH6 a6=apH7 a7=apH8 b0=cpH1 b1=cpH2 b2=cpH3 b3=cpH4 b4=cpH5 b5=cpH6 b6=cpH7 b7=cpH8 s=fe o0=bpH1 o1=bpH2 o2=bpH3 o3=bpH4 o4=bpH5 o5=bpH6 o6=bpH7 o7=bpH8
+
+.subckt mux8_2 a0=bpH1 a1=bpH2 a2=bpH3 a3=bpH4 a4=bpH5 a5=bpH6 a6=bpH7 a7=bpH8 b0=pH1 b1=pH2 b2=pH3 b3=pH4 b4=pH5 b5=pH6 b6=pH7 b7=pH8 s=sf o0=hpH1 o1=hpH2 o2=hpH3 o3=hpH4 o4=hpH5 o5=hpH6 o6=hpH7 o7=hpH8
+
+.subckt mux8_2 a0=hpH1 a1=hpH2 a2=hpH3 a3=hpH4 a4=hpH5 a5=hpH6 a6=hpH7 a7=hpH8 b0=zero b1=zero b2=zero b3=zero b4=zero b5=zero b6=zero b7=zero s=RST o0=epH1 o1=epH2 o2=epH3 o3=epH4 o4=epH5 o5=epH6 o6=epH7 o7=epH8
+
+.subckt registro8 a0=epH1 a1=epH2 a2=epH3 a3=epH4 a4=epH5 a5=epH6 a6=epH7 a7=epH8 o0=cpH1 o1=cpH2 o2=cpH3 o3=cpH4 o4=cpH5 o5=cpH6 o6=cpH7 o7=cpH8
+
+.subckt neutro pH1=cpH1 pH2=cpH2 pH3=cpH3 pH4=cpH4 pH5=cpH5 pH6=cpH6 pH7=cpH7 pH8=cpH8 END=END
+
+.subckt grt_14 a0=cpH1 a1=cpH2 a2=cpH3 a3=cpH4 a4=cpH5 a5=cpH6 a6=cpH7 a7=cpH8 o=ERRORE
+
+.subckt mux8_2 a0=cpH1 a1=cpH2 a2=cpH3 a3=cpH4 a4=cpH5 a5=cpH6 a6=cpH7 a7=cpH8 b0=pH1 b1=pH2 b2=pH3 b3=pH4 b4=pH5 b5=pH6 b6=pH7 b7=pH8 s=START o0=gpH1 o1=gpH2 o2=gpH3 o3=gpH4 o4=gpH5 o5=gpH6 o6=gpH7 o7=gpH8
+
+.subckt mux8_2 a0=zero a1=zero a2=zero a3=zero a4=zero a5=zero a6=zero a7=zero b0=gpH1 b1=gpH2 b2=gpH3 b3=gpH4 b4=gpH5 b5=gpH6 b6=gpH7 b7=gpH8 s=fe o0=fpH1 o1=fpH2 o2=fpH3 o3=fpH4 o4=fpH5 o5=fpH6 o6=fpH7 o7=fpH8
+
+.subckt mux8_2 a0=fpH1 a1=fpH2 a2=fpH3 a3=fpH4 a4=fpH5 a5=fpH6 a6=fpH7 a7=fpH8 b0=zero b1=zero b2=zero b3=zero b4=zero b5=zero b6=zero b7=zero s=RST o0=PH_FINALE1 o1=PH_FINALE2 o2=PH_FINALE3 o3=PH_FINALE4 o4=PH_FINALE5 o5=PH_FINALE6 o6=PH_FINALE7 o7=PH_FINALE8
+
+
+
+.subckt mux8_2 a0=clk1 a1=clk2 a2=clk3 a3=clk4 a4=clk5 a5=clk6 a6=clk7 a7=clk8 b0=bclk1 b1=bclk2 b2=bclk3 b3=bclk4 b4=bclk5 b5=bclk6 b6=bclk7 b7=bclk8 s=fe o0=aclk1 o1=aclk2 o2=aclk3 o3=aclk4 o4=aclk5 o5=aclk6 o6=aclk7 o7=aclk8
+
+.subckt mux8_2 a0=aclk1 a1=aclk2 a2=aclk1 a3=aclk4 a4=aclk5 a5=aclk6 a6=aclk7 a7=aclk8 b0=zero b1=zero b2=zero b3=zero b4=zero b5=zero b6=zero b7=zero s=RST o0=dclk1 o1=dclk2 o2=dclk3 o3=dclk4 o4=dclk5 o5=dclk6 o6=dclk7 o7=dclk8
+
+.subckt registro8 a0=dclk1 a1=dclk2 a2=dclk1 a3=dclk4 a4=dclk5 a5=dclk6 a6=dclk7 a7=dclk8 o0=bclk1 o1=bclk2 o2=bclk3 o3=bclk4 o4=bclk5 o5=bclk6 o6=bclk7 o7=bclk8
+
+.subckt mux8_2 a0=zero a1=zero a2=zero a3=zero a4=zero a5=zero a6=zero a7=zero b0=bclk1 b1=bclk2 b2=bclk3 b3=bclk4 b4=bclk5 b5=bclk6 b6=bclk7 b7=bclk8 s=fe o0=eclk1 o1=eclk2 o2=eclk3 o3=eclk4 o4=eclk5 o5=eclk6 o6=eclk7 o7=eclk8
+
+.subckt mux8_2 a0=eclk1 a1=eclk2 a2=eclk1 a3=eclk4 a4=eclk5 a5=eclk6 a6=eclk7 a7=eclk8 b0=zero b1=zero b2=zero b3=zero b4=zero b5=zero b6=zero b7=zero s=RST o0=fclk1 o1=fclk2 o2=fclk1 o3=fclk4 o4=fclk5 o5=fclk6 o6=fclk7 o7=fclk8
+
+.subckt mux8_2 a0=fclk1 a1=fclk2 a2=fclk1 a3=fclk4 a4=fclk5 a5=fclk6 a6=fclk7 a7=fclk8 b0=zero b1=zero b2=zero b3=zero b4=zero b5=zero b6=zero b7=zero s=ERRORE o0=NCLK1 o1=NCLK2 o2=NCLK3 o3=NCLK4 o4=NCLK5 o5=NCLK6 o6=NCLK7 o7=NCLK8
+
+.subckt piuuno8 a0=bclk1 a1=bclk2 a2=bclk3 a3=bclk4 a4=bclk5 a5=bclk6 a6=bclk7 a7=bclk8 x0=clk1 x1=clk2 x2=clk3 x3=clk4 x4=clk5 x5=clk6 x6=clk7 x7=clk8 
+
+.search zero.blif
+.search or2.blif
+.search and2.blif
+.search mux8_2.blif
+.search registro8.blif
+.search piu025.blif
+.search meno050.blif
+.search piuuno8.blif
+.search neutro.blif
+.search grt_14.blif
+
+.end

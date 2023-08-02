@@ -1,0 +1,21 @@
+.model meno050
+.inputs pH1 pH2 pH3 pH4 pH5 pH6 pH7 pH8
+.outputs x1 x2 x3 x4 x5 x6 x7 x8
+
+.subckt zero b=zero
+.subckt uno b=uno
+
+.subckt somma1 a=pH8 b=zero cin=zero o=x8 c=carry1
+.subckt somma1 a=pH7 b=zero cin=carry1 o=x7 c=carry2
+.subckt somma1 a=pH6 b=zero cin=carry2 o=x6 c=carry3
+.subckt somma1 a=pH5 b=uno cin=carry3 o=x5 c=carry4
+.subckt somma1 a=pH4 b=uno cin=carry4 o=x4 c=carry5
+.subckt somma1 a=pH3 b=uno cin=carry5 o=x3 c=carry6
+.subckt somma1 a=pH2 b=uno cin=carry6 o=x2 c=carry7
+.subckt somma1 a=pH1 b=uno cin=carry7 o=x1 c=carry8
+
+.search zero.blif
+.search uno.blif
+.search somma1.blif
+
+.end
